@@ -20,7 +20,7 @@
 // generation in your project.
 //
 
-#include "DBPlatformThreads.h"
+#include "PSTIPlatformThreadFactory.h"
 
 
 typedef void (^ __nullable DJIObjCPlatformThreadsConfigBlock)(NSThread * __nonnull thread);
@@ -30,7 +30,7 @@ typedef void (^ __nonnull DJIThreadFuncBlock)();
 /**
  * Cross-language platform thread implementation using NSThread.
  */
-@interface DJIObjCPlatformThreads : NSObject<DBPlatformThreads>
+@interface DJIObjCPlatformThreads : NSObject<PSTIPlatformThreadFactory>
 
 - (nullable instancetype)init __attribute__((unavailable("Please use factory method instead.")));
 
@@ -46,7 +46,7 @@ typedef void (^ __nonnull DJIThreadFuncBlock)();
 
 /** Creates and starts a new thread which will call the given function. */
 - (void)createThread:(nonnull NSString *)name
-                func:(nonnull DBThreadFunc *)func;
+                func:(nonnull PSTThreadFunc *)func;
 
 /** Creates and starts a new thread which will call the given block. */
 - (void)createThread:(nonnull NSString *)name

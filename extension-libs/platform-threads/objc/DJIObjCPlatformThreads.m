@@ -15,10 +15,10 @@
 //
 
 #include "DJIObjCPlatformThreads.h"
-#include "DBThreadFunc.h"
+#include "PSTThreadFunc.h"
 
 
-@interface DJIObjCPlatformThreadsInternalFunc : DBThreadFunc
+@interface DJIObjCPlatformThreadsInternalFunc : PSTThreadFunc
 - (instancetype)initWithBlock:(DJIThreadFuncBlock)block;
 - (void)run;
 @end
@@ -67,7 +67,7 @@
 }
 
 - (void)createThread:(nonnull NSString *)name
-                func:(nonnull DBThreadFunc *)func {
+                func:(nonnull PSTThreadFunc *)func {
     NSThread * thread = [[NSThread alloc] initWithTarget:func selector:@selector(run) object:nil];
     thread.name = name;
     if (_cfgBlock) {
